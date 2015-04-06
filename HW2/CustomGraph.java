@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class CustomGraph {
+public class CustomGraph { 
 	private int size;
 	// Like an adjacency matrix except instead of 1 or 0 for adjacent, it is 0 or the distance. 
 	private int[][] adjDist;
