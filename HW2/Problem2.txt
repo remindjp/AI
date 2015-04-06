@@ -1,0 +1,30 @@
+After each step, the state will change. Evaluation will be DFS. (..) means up 1 level.
+Starting state: [S0(-inf,+inf),A(-inf,+inf),B(-inf,+inf),C(-inf,+inf)] 
+
+A BRANCH
+
+S0 -> A -> 6
+6 becomes the min beta value for A
+[S0(-inf,+inf),A(-inf,6),B(-inf,+inf),C(-inf,+inf)] 
+
+.. A -> S1 -> 12
+Since 6 < 12, the min is still 6 and we do not have to visit s2. This is because if
+B visits s1, its A's turn who will pick max (12, s2) so A will get at least 12. Thus, B
+will just choose 6 instead. 
+[S0(-inf,+inf),A(6,6),B(-inf,+inf),C(-inf,+inf)] 
+A(6,6) makes S0(-inf,+inf) -> S0(6, +inf) since player A will be able to get at least 6
+by choosing node A.
+[S0(6,+inf),A(6,6),B(-inf,+inf),C(-inf,+inf)] 
+
+B BRANCH
+
+S0 -> B -> S3 -> 8
+beta for B is min(8,S5)
+..-> .. B -> S4 -> 15
+beta for B will not change since 8 < 15. So player A is guarenteed min(8, S5)
+[S0(min(6, min(8,S5)),+inf),A(6,6),B(min(8, S5),min(8, S5)),C(-inf,+inf)] 
+
+C BRANCH
+
+X is on the C branch. If X < min (8, s5) then C will be pruned since player A will always choose branch B over C then.
+So the maximum value of X has to be s5 in order for C to be pruned.
